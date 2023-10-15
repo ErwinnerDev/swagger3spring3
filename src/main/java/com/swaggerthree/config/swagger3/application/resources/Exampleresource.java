@@ -22,9 +22,8 @@ public interface Exampleresource {
     @ResponseStatus(HttpStatus.NOT_FOUND) //404
 
     @GetMapping(value = "/{name}")
-    @Operation(summary = "Saludar a un usuario", description = "Esto es una nota") //@ApiOperation(value = "Saludar a un usuario", notes = "Esto es una nota")
+    @Operation(summary = "Saludar a un usuario", description = "Esto es una nota")
     @ExceptionHandler(NullPointerException.class)
     ResponseEntity<ExampleResponse> saludar(
-            //@ApiParam(name = "name", value = "Puede ir cualquier valor", example = "Example: Erwin, chene, Evelin, Ojilver" )
             @PathVariable(name = "name") String name);
 }

@@ -55,6 +55,21 @@ Con las siguientes dependencias:
     }
     ```
 
+  Example:
+  ```java
+  @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK",          content = @Content(schema = @Schema(implementation = ExampleResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Bad request", content = @Content(schema = @Schema(implementation = ExampleResponse.class)))
+    })
+    @ResponseStatus(HttpStatus.NOT_FOUND) //404
+
+    @GetMapping(value = "/{name}")
+    @Operation(summary = "Saludar a un usuario", description = "Esto es una nota")
+    @ExceptionHandler(NullPointerException.class)
+    ResponseEntity<ExampleResponse> saludar(
+            @PathVariable(name = "name") String name);
+  ```
+  ![img.png](src/main/resources/static/imgSwagger.png)
   URL:
 
   [**http://localhost:8080/swagger-ui/index.html**](http://localhost:8080/swagger-ui/index.html)
